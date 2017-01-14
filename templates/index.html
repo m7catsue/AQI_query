@@ -1,0 +1,70 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}AQI Query{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='deathstar.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='deathstar.ico') }}" type="image/x-icon">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('index') }}">AQI Query</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}
+    <div class="page-header">
+        <h1><b>欢迎使用空气质量指数(AQI)查询工具</b></h1>
+        <p><i>luyaxin1990@gmail.com</i></p>
+    </div>
+
+    <div class="page-segment">
+        <h3><b>方式一: 根据城市名称查询</b></h3>
+        <div class="col-md-4">
+            <br>
+            {{ wtf.quick_form(form) }}
+        </div>
+        <div class="col-md-8">
+            {% if show_data_city %}
+            <h4><b>空气质量指数(AQI)查询结果</b></h4>
+            <p>城市名称: <b>{{ city_name }}</b></p>
+            <p>空气质量等级: <b>{{ aqi_level }}</b></p>
+            <p>空气质量指数(AQI): <b>{{ query_aqi }}</b></p>
+            <p>最后更新时间: <b>{{ query_time }}</b></p>
+            {% else %}
+            <br>
+            <br>
+            <br>
+            <p><b><i>目前没有进行查询</i></b></p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="page-segment"></div>
+    <div class="page-segment"></div>
+    {% endblock %}
+
+</div>
+{% endblock %}
+
