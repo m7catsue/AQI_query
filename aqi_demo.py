@@ -59,15 +59,6 @@ class GeoForm(FlaskForm):
     longitude = DecimalField('输入经度', places=3, validators=[DataRequired(), NumberRange(-180, 180)], )
     submit = SubmitField('提交经纬度查询')
 
-    # 自定义验证方法:验证经纬度是否为float,若不是则raise ValidationError
-    def validate_logitude(self, field):
-        if not isinstance(field.data, float):
-            raise ValidationError('经度格式错误')
-
-    def validate_latitude(self, field):
-        if not isinstance(field.data, float):
-            raise ValidationError('纬度格式错误')
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
