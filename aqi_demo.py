@@ -2,8 +2,7 @@
 # API token: 87711e84f75008ae850fde4a59410486da3b8585
 # http://api.waqi.info/feed/chengdu/?token=87711e84f75008ae850fde4a59410486da3b8585
 # http://api.waqi.info/feed/here/?token=87711e84f75008ae850fde4a59410486da3b8585
-
-# Multiple forms in a single page using flask and WTForms
+# [IMP] Multiple forms in a single page using flask and WTForms
 # http://stackoverflow.com/questions/18290142/multiple-forms-in-a-single-page-using-flask-and-wtforms
 
 import requests
