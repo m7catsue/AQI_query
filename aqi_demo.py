@@ -6,7 +6,6 @@
 # http://stackoverflow.com/questions/18290142/multiple-forms-in-a-single-page-using-flask-and-wtforms
 
 import requests
-from decimal import Decimal
 from flask import Flask, render_template, redirect, url_for, flash, session, request
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
